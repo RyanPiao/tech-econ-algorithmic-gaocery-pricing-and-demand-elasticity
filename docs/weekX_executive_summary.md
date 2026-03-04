@@ -1,8 +1,8 @@
 # Week X Executive Summary — Algorithmic Pricing and Demand Elasticity in App-Based Grocery Delivery
 
 ## Abstract
-This Week-X summary consolidates the baseline (Day2-Day7) and Week-2 continuation for estimating demand response to delivered-price changes in grocery delivery.
-Using a reproducible synthetic session panel (60,000 quote exposures), we validated production-style fee-version extraction, event-study diagnostics, heterogeneity analysis, and medium-run outcome models.
+This study examines demand response to delivered-price changes in app-based grocery delivery.
+Using a reproducible synthetic session panel (60,000 quote exposures), it evaluates fee-version extraction logic, event-study diagnostics, heterogeneity patterns, and medium-run outcome models under a transparent empirical workflow.
 The evidence supports a stable **descriptive** negative price-conversion relationship, but causal interpretation remains limited by synthetic data and pre-trend warnings.
 
 ## 2) Why this question matters
