@@ -1,4 +1,4 @@
-# Tech-Econ Research Lab: Algorithmic Pricing and Demand Elasticity in App-Based Grocery Delivery
+# Algorithmic Pricing and Demand Elasticity in App-Based Grocery Delivery
 
 This repository documents a reproducible applied-econometrics workflow for studying demand response to delivered-price changes in app-based grocery delivery.
 
