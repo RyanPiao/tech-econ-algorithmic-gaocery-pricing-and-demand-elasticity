@@ -24,10 +24,10 @@ For each outcome (`orders_next4w`, `sessions_next4w`, `active_next4w`):
 
 ## Repro
 ```bash
-python scripts/week2_day6_retention_frequency.py
+python scripts/stage2_step6_retention_frequency.py
 ```
 
 ## Outputs
-- `outputs/week2_day6_retention_frequency_models.csv`
-- `outputs/week2_day6_user_week_panel_sample.csv`
-- `outputs/week2_day6_medium_run_response_curve.png`
+- `outputs/stage2_step6_retention_frequency_models.csv`
+- `outputs/stage2_step6_user_stage_panel_sample.csv`
+- `outputs/stage2_step6_medium_run_response_curve.png`

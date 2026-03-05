@@ -16,11 +16,11 @@ Joint F-test for all lead coefficients (`event_week <= -2`) equal to zero.
 
 ## Repro
 ```bash
-python scripts/week2_day3_event_study.py
+python scripts/stage2_step3_event_study.py
 ```
 
 ## Outputs
-- `outputs/week2_day3_event_study_lead_lag_table.csv`
-- `outputs/week2_day3_pretrend_test.csv`
-- `outputs/week2_day3_event_study_sample_counts.csv`
-- `outputs/week2_day3_event_study_plot.png`
+- `outputs/stage2_step3_event_study_lead_lag_table.csv`
+- `outputs/stage2_step3_pretrend_test.csv`
+- `outputs/stage2_step3_event_study_sample_counts.csv`
+- `outputs/stage2_step3_event_study_plot.png`

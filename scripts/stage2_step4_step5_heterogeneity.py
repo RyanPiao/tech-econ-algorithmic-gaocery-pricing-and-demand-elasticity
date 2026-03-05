@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-DATA_IN = Path("data/week2_day2_production_session_panel.csv")
+DATA_IN = Path("data/stage2_step2_production_session_panel.csv")
 OUT_DIR = Path("outputs")
 
 
@@ -94,14 +94,14 @@ def plot_results(out: pd.DataFrame) -> None:
     plt.xlabel("Elasticity proxy coefficient on ln_effective_price")
     plt.title("Stage 2 Step 4-5: Heterogeneity in Price Response")
     plt.tight_layout()
-    plt.savefig(OUT_DIR / "week2_day4_day5_heterogeneity_plot.png", dpi=170)
+    plt.savefig(OUT_DIR / "stage2_step4_step5_heterogeneity_plot.png", dpi=170)
     plt.close()
 
 
 def main() -> None:
     if not DATA_IN.exists():
         raise FileNotFoundError(
-            f"{DATA_IN} missing. Run scripts/week2_day2_production_extraction.py first."
+            f"{DATA_IN} missing. Run scripts/stage2_step2_production_extraction.py first."
         )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -123,7 +123,7 @@ def main() -> None:
         rows.append(collect_result("market_segment", str(seg), sdf))
 
     out = pd.DataFrame(rows)
-    out.to_csv(OUT_DIR / "week2_day4_day5_heterogeneity_elasticity.csv", index=False)
+    out.to_csv(OUT_DIR / "stage2_step4_step5_heterogeneity_elasticity.csv", index=False)
 
     counts = (
         pd.DataFrame(
@@ -135,15 +135,15 @@ def main() -> None:
             }
         )
     )
-    counts.to_csv(OUT_DIR / "week2_day4_day5_segment_counts.csv", index=False)
+    counts.to_csv(OUT_DIR / "stage2_step4_step5_segment_counts.csv", index=False)
 
     plot_results(out)
 
     print("Stage2 Step4-5 outputs generated:")
     for path in [
-        OUT_DIR / "week2_day4_day5_heterogeneity_elasticity.csv",
-        OUT_DIR / "week2_day4_day5_segment_counts.csv",
-        OUT_DIR / "week2_day4_day5_heterogeneity_plot.png",
+        OUT_DIR / "stage2_step4_step5_heterogeneity_elasticity.csv",
+        OUT_DIR / "stage2_step4_step5_segment_counts.csv",
+        OUT_DIR / "stage2_step4_step5_heterogeneity_plot.png",
     ]:
         print(" -", path)
 

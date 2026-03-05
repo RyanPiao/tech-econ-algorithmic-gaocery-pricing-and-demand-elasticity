@@ -97,7 +97,7 @@ Build an analysis-ready session-level panel for estimating demand response to al
 ## Extraction output
 
 - Primary output file: `data/synthetic_session_panel.csv` (mock reproducible analogue)
-- Schema companion: this document + notebook checks in `notebooks/day2_ingestion.ipynb`
+- Schema companion: this document + notebook checks in `notebooks/step2_ingestion.ipynb`
 
 ---
 

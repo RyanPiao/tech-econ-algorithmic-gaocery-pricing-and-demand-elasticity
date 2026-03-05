@@ -1,7 +1,7 @@
 # Stage 2 Plan — Production Extraction and Causal-Readiness Extensions
 
 ## Context
-Stage 1 delivered a reproducible synthetic pipeline and a baseline econometric workflow. The immediate Stage 2 goal is to migrate the design to production-grade inputs and close the highest-priority evidence gaps documented in `docs/day7_weekly_recap.md` and `docs/day5_limitations.md`.
+Stage 1 delivered a reproducible synthetic pipeline and a baseline econometric workflow. The immediate Stage 2 goal is to migrate the design to production-grade inputs and close the highest-priority evidence gaps documented in `docs/step7_stagely_recap.md` and `docs/step5_limitations.md`.
 
 ## Stage 2 objective
 Upgrade the project from a workflow-validating baseline to a **decision-ready empirical package** with:
@@ -90,5 +90,5 @@ Detailed Step 1 framing memo: `docs/week2_DAY1_problem_framing.md`.
 
 ## Boundary conditions
 - No causal overstatement if pre-trend/identification diagnostics are weak.
-- Keep model interpretation aligned with credibility-gate logic from `docs/day2_preanalysis_lock.md`.
+- Keep model interpretation aligned with credibility-gate logic from `docs/step2_preanalysis_lock.md`.
 - Preserve reproducibility discipline: locked definitions, explicit QA, and exportable outputs.

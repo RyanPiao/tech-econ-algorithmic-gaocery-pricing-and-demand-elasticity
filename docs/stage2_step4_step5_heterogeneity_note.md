@@ -25,10 +25,10 @@ Within each subgroup:
 
 ## Repro
 ```bash
-python scripts/week2_day4_day5_heterogeneity.py
+python scripts/stage2_step4_step5_heterogeneity.py
 ```
 
 ## Outputs
-- `outputs/week2_day4_day5_heterogeneity_elasticity.csv`
-- `outputs/week2_day4_day5_segment_counts.csv`
-- `outputs/week2_day4_day5_heterogeneity_plot.png`
+- `outputs/stage2_step4_step5_heterogeneity_elasticity.csv`
+- `outputs/stage2_step4_step5_segment_counts.csv`
+- `outputs/stage2_step4_step5_heterogeneity_plot.png`

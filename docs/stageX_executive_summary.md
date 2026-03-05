@@ -11,9 +11,9 @@ Delivered-price algorithms (delivery, service, surge, and discounts) are central
 ## 3) Data used (Public Real/Synthetic + provenance)
 - **Public real data:** Not used in this repo run.
 - **Synthetic data (active):** `data/synthetic_session_panel.csv` (60,000 sessions; one row per quote exposure, including non-converters), generated via:
-  - `python scripts/day2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303`
-- **Production-style extension fields:** `data/week2_day2_production_session_panel.csv` adds immutable fee-version metadata and extraction timestamps.
-- **Provenance artifacts:** `outputs/week2_day2_fee_version_catalog.csv`, `outputs/week2_day2_extraction_quality_checks.csv`, and baseline lock docs in `docs/day2_preanalysis_lock.md` and `docs/week2_day2_production_extraction_spec.md`.
+  - `python scripts/step2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303`
+- **Production-style extension fields:** `data/stage2_step2_production_session_panel.csv` adds immutable fee-version metadata and extraction timestamps.
+- **Provenance artifacts:** `outputs/stage2_step2_fee_version_catalog.csv`, `outputs/stage2_step2_extraction_quality_checks.csv`, and baseline lock docs in `docs/step2_preanalysis_lock.md` and `docs/stage2_step2_production_extraction_spec.md`.
 
 ## 4) Method in plain English + estimand + identification assumptions
 **Plain-English approach:**
@@ -24,7 +24,7 @@ Delivered-price algorithms (delivery, service, surge, and discounts) are central
 5. Estimate medium-run associations with next-4-stage activity outcomes.
 
 **Estimand (locked):**
-- Primary rollout-based elasticity-style estimand from `docs/day2_preanalysis_lock.md`:
+- Primary rollout-based elasticity-style estimand from `docs/step2_preanalysis_lock.md`:
   - \(\theta = \Delta E[Conversion \mid Rollout] / \Delta E[\ln(EffectivePrice) \mid Rollout]\)
 - Descriptive estimand (fallback): coefficient on `ln_effective_price` in FE models.
 
@@ -35,14 +35,14 @@ Delivered-price algorithms (delivery, service, surge, and discounts) are central
 - Cluster-robust inference at market level.
 
 ## 5) Key findings (3-5 bullets)
-- **Extraction integrity passed key production checks:** missing `fee_version_id` rate = **0.0000**; immutable timestamp violation rate = **0.0000** (`outputs/week2_day2_extraction_quality_checks.csv`).
-- **Descriptive elasticity remains negative and precise:** baseline FE estimate \(\beta_{\ln price}\) ≈ **-0.0499** (p<0.001), consistent with lower conversion at higher delivered prices (`outputs/day4_baseline_model_results.csv`).
-- **Event-study credibility warning:** joint pre-trend test p-value = **0.000463**, indicating pre-trend concern under current specification (`outputs/week2_day3_pretrend_test.csv`).
-- **Heterogeneity is directionally consistent:** elasticity is negative across all reported subgroups, ranging from about **-0.0396** (mixed regional) to **-0.0574** (non-high-urgency) (`outputs/week2_day4_day5_heterogeneity_elasticity.csv`).
-- **Medium-run outcomes are near zero and imprecise:** coefficients for next-4-stage orders/sessions/activity are small and statistically weak (`outputs/week2_day6_retention_frequency_models.csv`).
+- **Extraction integrity passed key production checks:** missing `fee_version_id` rate = **0.0000**; immutable timestamp violation rate = **0.0000** (`outputs/stage2_step2_extraction_quality_checks.csv`).
+- **Descriptive elasticity remains negative and precise:** baseline FE estimate \(\beta_{\ln price}\) ≈ **-0.0499** (p<0.001), consistent with lower conversion at higher delivered prices (`outputs/step4_baseline_model_results.csv`).
+- **Event-study credibility warning:** joint pre-trend test p-value = **0.000463**, indicating pre-trend concern under current specification (`outputs/stage2_step3_pretrend_test.csv`).
+- **Heterogeneity is directionally consistent:** elasticity is negative across all reported subgroups, ranging from about **-0.0396** (mixed regional) to **-0.0574** (non-high-urgency) (`outputs/stage2_step4_step5_heterogeneity_elasticity.csv`).
+- **Medium-run outcomes are near zero and imprecise:** coefficients for next-4-stage orders/sessions/activity are small and statistically weak (`outputs/stage2_step6_retention_frequency_models.csv`).
 
 ## 6) Robustness summary
-- Baseline robustness checks (Stage-1 package) preserve sign and similar magnitude across pre-registered specs (contamination controls, alternate price definition, winsorization), while placebo is not statistically significant (`outputs/day5_robustness_checks.csv`).
+- Baseline robustness checks (Stage-1 package) preserve sign and similar magnitude across pre-registered specs (contamination controls, alternate price definition, winsorization), while placebo is not statistically significant (`outputs/step5_robustness_checks.csv`).
 - Stage-2 robustness-through-expansion shows stable negative price-conversion association across lifecycle, urgency, and market-segment splits.
 - Net assessment: **directional stability is good**, but causal credibility is not fully upgraded because the pre-trend gate is not satisfied in Stage-2 event-study diagnostics.
 
@@ -71,18 +71,18 @@ python scripts/week2_run_all.py
 ```
 Optional baseline rerun:
 ```bash
-python scripts/day2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303
-python scripts/day3_day5_pipeline.py
+python scripts/step2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303
+python scripts/step3_day5_pipeline.py
 ```
 
 ## 10) Evidence links + citations + next-stage plan
 **Core evidence links (repo artifacts):**
-- Design lock: `docs/day2_preanalysis_lock.md`
-- Stage-2 extraction: `docs/week2_day2_production_extraction_spec.md`
-- Event-study diagnostics: `docs/week2_day3_event_study_note.md`, `outputs/week2_day3_pretrend_test.csv`
-- Heterogeneity: `docs/week2_day4_day5_heterogeneity_note.md`, `outputs/week2_day4_day5_heterogeneity_elasticity.csv`
-- Medium-run outcomes: `docs/week2_day6_retention_frequency_note.md`, `outputs/week2_day6_retention_frequency_models.csv`
-- Weekly recap: `docs/week2_day7_weekly_recap.md`
+- Design lock: `docs/step2_preanalysis_lock.md`
+- Stage-2 extraction: `docs/stage2_step2_production_extraction_spec.md`
+- Event-study diagnostics: `docs/stage2_step3_event_study_note.md`, `outputs/stage2_step3_pretrend_test.csv`
+- Heterogeneity: `docs/stage2_step4_step5_heterogeneity_note.md`, `outputs/stage2_step4_step5_heterogeneity_elasticity.csv`
+- Medium-run outcomes: `docs/stage2_step6_retention_frequency_note.md`, `outputs/stage2_step6_retention_frequency_models.csv`
+- Weekly recap: `docs/stage2_step7_stagely_recap.md`
 
 **Citations (methods/context):**
 - Callaway, B., & Sant'Anna, P. H. C. (2021). Difference-in-Differences with multiple time periods. *Journal of Econometrics*.

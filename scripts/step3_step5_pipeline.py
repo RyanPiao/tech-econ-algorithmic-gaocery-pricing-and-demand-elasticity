@@ -219,7 +219,7 @@ def day5_outputs(df: pd.DataFrame) -> pd.DataFrame:
 def main() -> None:
     if not DATA_PATH.exists():
         raise FileNotFoundError(
-            f"{DATA_PATH} not found. Run scripts/day2_generate_synthetic_data.py first."
+            f"{DATA_PATH} not found. Run scripts/step2_generate_synthetic_data.py first."
         )
 
     df = pd.read_csv(DATA_PATH, parse_dates=["quote_ts_utc", "quote_ts_local", "date"])

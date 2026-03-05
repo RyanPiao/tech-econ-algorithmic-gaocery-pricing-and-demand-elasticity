@@ -22,12 +22,12 @@ Introduce a production-style extraction layer that attaches each session quote t
 
 ## Repro
 ```bash
-python scripts/week2_day2_production_extraction.py
+python scripts/stage2_step2_production_extraction.py
 ```
 
 ## Outputs
-- `data/week2_day2_production_session_panel.csv`
-- `outputs/week2_day2_fee_version_catalog.csv`
-- `outputs/week2_day2_extraction_quality_checks.csv`
-- `outputs/week2_day2_fee_version_market_share.csv`
-- `outputs/week2_day2_fee_versions_over_time.png`
+- `data/stage2_step2_production_session_panel.csv`
+- `outputs/stage2_step2_fee_version_catalog.csv`
+- `outputs/stage2_step2_extraction_quality_checks.csv`
+- `outputs/stage2_step2_fee_version_market_share.csv`
+- `outputs/stage2_step2_fee_versions_over_time.png`

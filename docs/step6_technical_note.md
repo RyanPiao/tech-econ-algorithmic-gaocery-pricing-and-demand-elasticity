@@ -32,22 +32,22 @@ pip install -r requirements.txt
 ### 2) Generate synthetic dataset (Step 2)
 
 ```bash
-python scripts/day2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303
+python scripts/step2_generate_synthetic_data.py --n-sessions 60000 --seed 20260303
 ```
 
 ### 3) Build Step 3–5 outputs
 
 ```bash
-python scripts/day3_day5_pipeline.py
+python scripts/step3_day5_pipeline.py
 ```
 
 ### 4) Optional notebook workflow
 
 Open and run notebooks in order:
-1. `notebooks/day2_ingestion.ipynb`
-2. `notebooks/day3_eda.ipynb`
-3. `notebooks/day4_baseline_model.ipynb`
-4. `notebooks/day5_robustness_sensitivity.ipynb`
+1. `notebooks/step2_ingestion.ipynb`
+2. `notebooks/step3_eda.ipynb`
+3. `notebooks/step4_baseline_model.ipynb`
+4. `notebooks/step5_robustness_sensitivity.ipynb`
 
 ## Expected outputs
 
@@ -58,4 +58,4 @@ Open and run notebooks in order:
 ## Guardrails
 
 - No raw private data is committed.
-- Causal claims must satisfy pre-defined credibility gates in `docs/day2_preanalysis_lock.md`.
+- Causal claims must satisfy pre-defined credibility gates in `docs/step2_preanalysis_lock.md`.

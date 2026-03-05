@@ -10,7 +10,7 @@ Using non-contaminated sessions (`contaminated == 0`), we estimated:
 
 Clustered standard errors at market level.
 
-## Key outputs (from `outputs/day4_baseline_model_results.csv`)
+## Key outputs (from `outputs/step4_baseline_model_results.csv`)
 
 - First-stage rollout effect on log price: **0.0252** (SE 0.0041, p < 0.001)
   - Interpretation: rollout raised effective pre-tax price by about 2.5% on average.

@@ -7,11 +7,11 @@ Inputs
 
 Outputs
 -------
-- data/week2_day2_production_session_panel.csv
-- outputs/week2_day2_fee_version_catalog.csv
-- outputs/week2_day2_extraction_quality_checks.csv
-- outputs/week2_day2_fee_version_market_share.csv
-- outputs/week2_day2_fee_versions_over_time.png
+- data/stage2_step2_production_session_panel.csv
+- outputs/stage2_step2_fee_version_catalog.csv
+- outputs/stage2_step2_extraction_quality_checks.csv
+- outputs/stage2_step2_fee_version_market_share.csv
+- outputs/stage2_step2_fee_versions_over_time.png
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ import numpy as np
 import pandas as pd
 
 DATA_IN = Path("data/synthetic_session_panel.csv")
-DATA_OUT = Path("data/week2_day2_production_session_panel.csv")
+DATA_OUT = Path("data/stage2_step2_production_session_panel.csv")
 OUT_DIR = Path("outputs")
 
 MARKET_SEGMENT = {
@@ -177,13 +177,13 @@ def plot_fee_version_trend(df: pd.DataFrame) -> None:
     plt.ylabel("Sessions")
     plt.xlabel("Stage")
     plt.tight_layout()
-    plt.savefig(OUT_DIR / "week2_day2_fee_versions_over_time.png", dpi=170)
+    plt.savefig(OUT_DIR / "stage2_step2_fee_versions_over_time.png", dpi=170)
     plt.close()
 
 
 def main() -> None:
     if not DATA_IN.exists():
-        raise FileNotFoundError(f"{DATA_IN} not found. Run scripts/day2_generate_synthetic_data.py first.")
+        raise FileNotFoundError(f"{DATA_IN} not found. Run scripts/step2_generate_synthetic_data.py first.")
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -196,10 +196,10 @@ def main() -> None:
     DATA_OUT.parent.mkdir(parents=True, exist_ok=True)
     extracted.to_csv(DATA_OUT, index=False)
 
-    catalog.to_csv(OUT_DIR / "week2_day2_fee_version_catalog.csv", index=False)
+    catalog.to_csv(OUT_DIR / "stage2_step2_fee_version_catalog.csv", index=False)
 
     checks = build_quality_checks(extracted, catalog)
-    checks.to_csv(OUT_DIR / "week2_day2_extraction_quality_checks.csv", index=False)
+    checks.to_csv(OUT_DIR / "stage2_step2_extraction_quality_checks.csv", index=False)
 
     share = (
         extracted.groupby(["market_id", "fee_version_id"], as_index=False)
@@ -207,17 +207,17 @@ def main() -> None:
         .sort_values(["market_id", "sessions"], ascending=[True, False])
     )
     share["session_share_market"] = share["sessions"] / share.groupby("market_id")["sessions"].transform("sum")
-    share.to_csv(OUT_DIR / "week2_day2_fee_version_market_share.csv", index=False)
+    share.to_csv(OUT_DIR / "stage2_step2_fee_version_market_share.csv", index=False)
 
     plot_fee_version_trend(extracted)
 
     print("Stage2 Step2 outputs generated:")
     for path in [
         DATA_OUT,
-        OUT_DIR / "week2_day2_fee_version_catalog.csv",
-        OUT_DIR / "week2_day2_extraction_quality_checks.csv",
-        OUT_DIR / "week2_day2_fee_version_market_share.csv",
-        OUT_DIR / "week2_day2_fee_versions_over_time.png",
+        OUT_DIR / "stage2_step2_fee_version_catalog.csv",
+        OUT_DIR / "stage2_step2_extraction_quality_checks.csv",
+        OUT_DIR / "stage2_step2_fee_version_market_share.csv",
+        OUT_DIR / "stage2_step2_fee_versions_over_time.png",
     ]:
         print(" -", path)
 

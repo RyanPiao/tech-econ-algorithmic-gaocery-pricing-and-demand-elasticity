@@ -10,11 +10,11 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-DATA_IN = Path("data/week2_day2_production_session_panel.csv")
+DATA_IN = Path("data/stage2_step2_production_session_panel.csv")
 OUT_DIR = Path("outputs")
 
 
-def build_user_week_panel(df: pd.DataFrame) -> pd.DataFrame:
+def build_user_stage_panel(df: pd.DataFrame) -> pd.DataFrame:
     d = df.copy()
     d["week_start"] = d["quote_ts_local"].dt.to_period("W-SUN").dt.start_time
 
@@ -117,14 +117,14 @@ def plot_response_curve(base: pd.DataFrame) -> None:
 
     plt.title("Stage 2 Step 6: Medium-Run Retention/Frequency Response")
     fig.tight_layout()
-    plt.savefig(OUT_DIR / "week2_day6_medium_run_response_curve.png", dpi=170)
+    plt.savefig(OUT_DIR / "stage2_step6_medium_run_response_curve.png", dpi=170)
     plt.close()
 
 
 def main() -> None:
     if not DATA_IN.exists():
         raise FileNotFoundError(
-            f"{DATA_IN} missing. Run scripts/week2_day2_production_extraction.py first."
+            f"{DATA_IN} missing. Run scripts/stage2_step2_production_extraction.py first."
         )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -132,19 +132,19 @@ def main() -> None:
     df = pd.read_csv(DATA_IN, parse_dates=["quote_ts_local", "quote_ts_utc", "date"])
     df = df[df["contaminated"] == 0].copy()
 
-    panel = build_user_week_panel(df)
+    panel = build_user_stage_panel(df)
     models, base = fit_models(panel)
 
-    models.to_csv(OUT_DIR / "week2_day6_retention_frequency_models.csv", index=False)
-    panel.head(1000).to_csv(OUT_DIR / "week2_day6_user_week_panel_sample.csv", index=False)
+    models.to_csv(OUT_DIR / "stage2_step6_retention_frequency_models.csv", index=False)
+    panel.head(1000).to_csv(OUT_DIR / "stage2_step6_user_stage_panel_sample.csv", index=False)
 
     plot_response_curve(base)
 
     print("Stage2 Step6 outputs generated:")
     for path in [
-        OUT_DIR / "week2_day6_retention_frequency_models.csv",
-        OUT_DIR / "week2_day6_user_week_panel_sample.csv",
-        OUT_DIR / "week2_day6_medium_run_response_curve.png",
+        OUT_DIR / "stage2_step6_retention_frequency_models.csv",
+        OUT_DIR / "stage2_step6_user_stage_panel_sample.csv",
+        OUT_DIR / "stage2_step6_medium_run_response_curve.png",
     ]:
         print(" -", path)
 

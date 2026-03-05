@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
-DATA_IN = Path("data/week2_day2_production_session_panel.csv")
+DATA_IN = Path("data/stage2_step2_production_session_panel.csv")
 OUT_DIR = Path("outputs")
 
 
@@ -133,14 +133,14 @@ def plot_event_study(table: pd.DataFrame) -> None:
     plt.ylabel("Coefficient on event-stage dummy")
     plt.legend(loc="best")
     plt.tight_layout()
-    plt.savefig(OUT_DIR / "week2_day3_event_study_plot.png", dpi=170)
+    plt.savefig(OUT_DIR / "stage2_step3_event_study_plot.png", dpi=170)
     plt.close()
 
 
 def main() -> None:
     if not DATA_IN.exists():
         raise FileNotFoundError(
-            f"{DATA_IN} missing. Run scripts/week2_day2_production_extraction.py first."
+            f"{DATA_IN} missing. Run scripts/stage2_step2_production_extraction.py first."
         )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -161,24 +161,24 @@ def main() -> None:
     table = build_lead_lag_table(model, event_window)
     pretrend = run_pretrend_test(model, event_window)
 
-    table.to_csv(OUT_DIR / "week2_day3_event_study_lead_lag_table.csv", index=False)
-    pretrend.to_csv(OUT_DIR / "week2_day3_pretrend_test.csv", index=False)
+    table.to_csv(OUT_DIR / "stage2_step3_event_study_lead_lag_table.csv", index=False)
+    pretrend.to_csv(OUT_DIR / "stage2_step3_pretrend_test.csv", index=False)
 
     sample = (
         es.groupby("event_week", as_index=False)
         .agg(sessions=("session_id", "count"), conversion_rate=("conversion", "mean"))
         .sort_values("event_week")
     )
-    sample.to_csv(OUT_DIR / "week2_day3_event_study_sample_counts.csv", index=False)
+    sample.to_csv(OUT_DIR / "stage2_step3_event_study_sample_counts.csv", index=False)
 
     plot_event_study(table)
 
     print("Stage2 Step3 outputs generated:")
     for path in [
-        OUT_DIR / "week2_day3_event_study_lead_lag_table.csv",
-        OUT_DIR / "week2_day3_pretrend_test.csv",
-        OUT_DIR / "week2_day3_event_study_sample_counts.csv",
-        OUT_DIR / "week2_day3_event_study_plot.png",
+        OUT_DIR / "stage2_step3_event_study_lead_lag_table.csv",
+        OUT_DIR / "stage2_step3_pretrend_test.csv",
+        OUT_DIR / "stage2_step3_event_study_sample_counts.csv",
+        OUT_DIR / "stage2_step3_event_study_plot.png",
     ]:
         print(" -", path)
 

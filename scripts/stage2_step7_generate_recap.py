@@ -8,7 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 OUT_DIR = Path("outputs")
-DOC_OUT = Path("docs/week2_day7_weekly_recap.md")
+DOC_OUT = Path("docs/stage2_step7_stagely_recap.md")
 
 
 def fmt(v: float, digits: int = 4) -> str:
@@ -18,10 +18,10 @@ def fmt(v: float, digits: int = 4) -> str:
 
 
 def main() -> None:
-    step2 = pd.read_csv(OUT_DIR / "week2_day2_extraction_quality_checks.csv")
-    step3 = pd.read_csv(OUT_DIR / "week2_day3_pretrend_test.csv")
-    step4 = pd.read_csv(OUT_DIR / "week2_day4_day5_heterogeneity_elasticity.csv")
-    step6 = pd.read_csv(OUT_DIR / "week2_day6_retention_frequency_models.csv")
+    step2 = pd.read_csv(OUT_DIR / "stage2_step2_extraction_quality_checks.csv")
+    step3 = pd.read_csv(OUT_DIR / "stage2_step3_pretrend_test.csv")
+    step4 = pd.read_csv(OUT_DIR / "stage2_step4_step5_heterogeneity_elasticity.csv")
+    step6 = pd.read_csv(OUT_DIR / "stage2_step6_retention_frequency_models.csv")
 
     missing_fee = step2.loc[step2["check"] == "missing_fee_version_id_rate", "value"].squeeze()
     immutable_violation = step2.loc[step2["check"] == "non_immutable_version_timestamp_rate", "value"].squeeze()
@@ -59,19 +59,19 @@ This Stage 2 continuation implemented the four requested focus areas end-to-end 
 
 ## Output index
 - Step 2:
-  - `outputs/week2_day2_fee_version_catalog.csv`
-  - `outputs/week2_day2_extraction_quality_checks.csv`
-  - `outputs/week2_day2_fee_versions_over_time.png`
+  - `outputs/stage2_step2_fee_version_catalog.csv`
+  - `outputs/stage2_step2_extraction_quality_checks.csv`
+  - `outputs/stage2_step2_fee_versions_over_time.png`
 - Step 3:
-  - `outputs/week2_day3_event_study_lead_lag_table.csv`
-  - `outputs/week2_day3_pretrend_test.csv`
-  - `outputs/week2_day3_event_study_plot.png`
+  - `outputs/stage2_step3_event_study_lead_lag_table.csv`
+  - `outputs/stage2_step3_pretrend_test.csv`
+  - `outputs/stage2_step3_event_study_plot.png`
 - Step 4-5:
-  - `outputs/week2_day4_day5_heterogeneity_elasticity.csv`
-  - `outputs/week2_day4_day5_heterogeneity_plot.png`
+  - `outputs/stage2_step4_step5_heterogeneity_elasticity.csv`
+  - `outputs/stage2_step4_step5_heterogeneity_plot.png`
 - Step 6:
-  - `outputs/week2_day6_retention_frequency_models.csv`
-  - `outputs/week2_day6_medium_run_response_curve.png`
+  - `outputs/stage2_step6_retention_frequency_models.csv`
+  - `outputs/stage2_step6_medium_run_response_curve.png`
 
 ## Reproducibility
 ```bash

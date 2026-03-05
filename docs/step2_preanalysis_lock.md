@@ -69,7 +69,7 @@ Coefficient on \(\ln(\text{EffectivePrice}_{imt})\) from FE panel model:
 ## 3) Extraction specification (final)
 
 Final extraction schema and joins are documented in:
-- `docs/day2_data_extraction_spec.md`
+- `docs/step2_data_extraction_spec.md`
 
 Locked extraction grain:
 - **One row per session quote exposure** (including non-converting sessions)
